@@ -1,0 +1,2 @@
+websockets==10.4
+fastapi[all]==0.88

@@ -4,13 +4,54 @@
         <meta charset="utf-8">
         <title>Sample web chat</title>
         <script src="/static/runtime.js"></script>
+        <style>
+            body {
+                display: grid;
+                justify-content: center;
+            }
+
+            html, body {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+            }
+
+            #chat {
+                display: flex;
+                width: 500px;
+                height: 500px;
+                background: rgba(0, 0, 0, 0.05);
+                padding: 5px;
+                flex-direction: column;
+            }
+            #messages {
+                flex-grow: 1;
+            }
+
+            #input {
+                display: flex;
+                flex-direction: row;
+            }
+            #messageText {
+                flex-grow: 1;
+            }
+
+            #messages {
+                margin-top: 5px;
+                border: 2px solid rgba(0, 0, 0, 0.1);
+                overflow-y: scroll;
+            }
+        </style>
     </head>
     <body>
-        <form action="" onsubmit="sendMessage(event)">
-            <input type="text" id="messageText" autocomplete="off"/>
-            <button>Send</button>
-        </form>
-        <ul id='messages'>
-        </ul>
+        <div id="chat">
+            Messages:
+            <ul id='messages'>
+            </ul>
+            <form id="input" action="" onsubmit="sendMessage(event)">
+                <input type="text" id="messageText" autocomplete="off"/>
+                <button>Send message</button>
+            </form>
+        </div>
     </body>
 </html>

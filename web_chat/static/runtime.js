@@ -4,8 +4,10 @@ const ws = new WebSocket((window.location.protocol === "http:" ? "ws" : "wss") +
 
 function sendMessage(event) {
     var input = document.getElementById("messageText");
-    ws.send(input.value);
-    input.value = '';
+    if (input.value !== "") {
+        ws.send(input.value);
+        input.value = '';
+    }
     event.preventDefault();
 }
 
@@ -17,5 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
         var content = document.createTextNode(event.data);
         message.appendChild(content);
         messages.appendChild(message);
+        messages.scrollTop = messages.scrollHeight;
     };
 });
